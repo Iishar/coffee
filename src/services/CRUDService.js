@@ -98,7 +98,7 @@ let deleteUserById = (userId) => {
         where: { id: userId },
       });
       if (user) {
-        await user.destroy();
+        await db.Users.destroy({ where: { id: userId } });
         let allUsers = await db.Users.findAll();
         resolve(allUsers);
       } else {
